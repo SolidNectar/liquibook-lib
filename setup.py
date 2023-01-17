@@ -6,7 +6,7 @@ setup(
     description='Liquibook lib',
     author='Eric Newhuis',
     author_email='freewill@librem.one',
-    packages=['my_package'],
+    packages=['python'],
     install_requires=[
         'protobuf',
     ],
