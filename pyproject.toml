@@ -12,3 +12,4 @@ authors = [
 description = "Liquibook Library"
 dependencies = ["protobuf"]
 requires-python = ">=3.8"
+packages = ["python"]
