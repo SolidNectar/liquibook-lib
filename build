@@ -1,0 +1,15 @@
+set -e
+
+DIR=${0%/*}
+pushd $DIR
+
+rm -rf python/liquibook/protobufs
+mkdir -p python/liquibook/protobufs
+touch python/liquibook/protobufs/__init__.py
+
+pushd protobufs
+echo "building protobufs"
+protoc --python_out=../python/liquibook/protobufs/ *.proto
+popd
+
+popd

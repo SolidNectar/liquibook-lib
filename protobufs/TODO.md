@@ -1,0 +1,1 @@
+- Split Activity out of markets.proto since it is a general activity/notification protocol

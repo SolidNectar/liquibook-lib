@@ -1,0 +1,34 @@
+syntax = "proto3";
+package ReactorCore;
+
+enum ActiveState
+{
+    UNKNOWN = 0;
+    SUSPENDED = 1;
+    ACTIVE = 2;
+}
+
+message ActiveStatus
+{
+    ActiveState activeState = 1;
+}
+
+message SetActiveState
+{
+    ActiveState activeState = 1;
+}
+
+message RuleSettings
+{
+    uint64 tickSize = 1;
+    uint64 minimumOrderSize = 2;
+}
+
+message ReactorCtl
+{
+    oneof msg
+    {
+        SetActiveState setActiveState = 1;
+        RuleSettings ruleSettings = 2;
+    }
+}

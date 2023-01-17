@@ -1,0 +1,150 @@
+syntax = "proto3";
+package ReactorPublic;
+
+import "google/protobuf/timestamp.proto";
+
+message Price
+{
+    uint32 price = 1;
+    uint32 size = 2;
+    google.protobuf.Timestamp timestamp = 3;
+}
+
+message BBO
+{
+    Price bidPrice = 1;
+    Price askPrice = 2;
+    Price lastTradePrice = 3;
+}
+
+
+message Trade
+{
+    Price tradePrice = 1;
+}
+
+
+enum Side
+{
+    UNKNOWN_SIDE = 0;
+    BUY = 1;
+    SELL = 2;
+}
+
+enum OrderType
+{
+    UNKNOWN_ORDERTYPE = 0;
+    GTC = 1;  // Good 'Til Canceled
+    AON = 2;  // All Or None
+    IOC = 3;  // Immediate Or Cancel
+    FOK = 4;  // Fill Or Kill (both AON and IOC)
+    STOP = 5; // Stop order
+}
+
+enum ModifyType
+{
+    UNKNOWN_MODIFYTYPE = 0;
+    PRICE = 1;
+    QUANTITY = 2;
+    PRICE_AND_QUANTITY = 3;
+}
+
+message NewOrder
+{
+    string clOrdID = 1;      // client order id
+    Side side = 2;
+    OrderType orderType = 3;
+    uint32 price = 4;        // market price if 0
+    uint32 quantity = 5;
+    uint32 stopPrice = 6;    // used if orderType is STOP
+}
+
+message CancelOrder
+{
+    string clOrdID = 1;
+}
+
+message ModifyOrder
+{
+    string clOrdID = 1;      // client order id
+    ModifyType modifyType = 3;
+    uint32 price = 4;        // market price if 0
+    uint32 quantity = 5;
+}
+
+message Action
+{
+    oneof msg
+    {
+        NewOrder newOrder = 1;
+        CancelOrder cancelOrder = 2;
+        ModifyOrder modifyOrder = 3;
+    }
+}
+
+
+message OrderAccept
+{
+    string clOrdID = 1;
+}
+
+message OrderReject
+{
+    string clOrdID = 1;
+    string reason = 2;
+}
+
+message OrderFill
+{
+    string clOrdID = 1;
+    Side side = 2;
+    Price fillPrice = 3;
+}
+
+message CancelAccept
+{
+    string clOrdID = 1;
+}
+
+message CancelReject
+{
+    string clOrdID = 1;
+    string reason = 2;
+}
+
+message ModifyAccept
+{
+    string clOrdID = 1;
+}
+
+message ModifyReject
+{
+    string clOrdID = 1;
+    string reason = 2;
+}
+
+message Status
+{
+    oneof msg
+    {
+        OrderAccept orderAccept = 1;
+        OrderReject orderReject = 2;
+        OrderFill orderFill = 3;
+        CancelAccept cancelAccept = 4;
+        CancelReject cancelReject = 5;
+        ModifyAccept modifyAccept = 6;
+        ModifyReject modifyReject = 7;
+    }
+}
+
+enum ActiveState
+{
+    UNKNOWN_ACTIVESTATE = 0;
+    SUSPENDED = 1;
+    ACTIVE = 2;
+}
+
+message ActiveStatus
+{
+    ActiveState activeState = 1;
+}
