@@ -2,15 +2,13 @@
   "name": "liquibook-lib",
   "version": "0.1.0",
   "description": "Liquibook Library",
-  "main": "index.js",
+  "main": "protobufs.js",
+  "types": "protobufs.d.ts",
   "scripts": {
     "build": "pbjs -t static-module -w es6 -o ./protobufs.js ./protobufs/markets.proto && pbts -o ./protobufs.d.ts ./protobufs.js"
   },
   "author": "Eric Newhuis",
   "license": "UNLICENSED",
-  "files": [
-    "js"
-  ],
   "dependencies": {
     "protobufjs": "^7.1.2"
   },
