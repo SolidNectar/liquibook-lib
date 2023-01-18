@@ -9,6 +9,10 @@
   },
   "author": "Eric Newhuis",
   "license": "UNLICENSED",
+  "files": [
+    "protobufs.js",
+    "protobufs.d.ts"
+  ],
   "dependencies": {
     "protobufjs": "^7.1.2"
   },
