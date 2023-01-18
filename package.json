@@ -5,13 +5,12 @@
   "main": "protobufs.js",
   "types": "protobufs.d.ts",
   "scripts": {
-    "build": "pbjs -t static-module -w es6 -o ./protobufs.js ./protobufs/markets.proto && pbts -o ./protobufs.d.ts ./protobufs.js"
+    "build": "mkdir -p dist && pbjs -t static-module -w es6 -o ./dist/protobufs.js ./protobufs/markets.proto && pbts -o ./dist/protobufs.d.ts ./dist/protobufs.js"
   },
   "author": "Eric Newhuis",
   "license": "UNLICENSED",
   "files": [
-    "protobufs.js",
-    "protobufs.d.ts"
+    "dist"
   ],
   "dependencies": {
     "protobufjs": "^7.1.2"
