@@ -12,4 +12,7 @@ echo "building protobufs"
 protoc --python_out=../python/liquibook/protobufs/ *.proto
 popd
 
+npm install
+npm run build
+
 popd
