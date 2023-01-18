@@ -4,7 +4,7 @@
   "description": "Liquibook Library",
   "main": "index.js",
   "scripts": {
-    "build": "pbjs -t static-module -w es6 -o ./js/liquibook/protobufs.js ./protobufs/markets.proto && pbts -o ./js/liquibook/protobufs.d.ts ./js/liquibook/protobufs.js"
+    "build": "pbjs -t static-module -w es6 -o ./protobufs.js ./protobufs/markets.proto && pbts -o ./protobufs.d.ts ./protobufs.js"
   },
   "author": "Eric Newhuis",
   "license": "UNLICENSED",
