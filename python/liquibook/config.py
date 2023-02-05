@@ -24,6 +24,7 @@ class tsdb:
 class redis:
     host = os.environ.get('LOCI_REDIS_HOST', 'redis')
     port = int(os.environ.get('LOCI_REDIS_PORT', '6379'))
+    db = int(os.environ.get('LOCI_REDIS_DB', '1'))
     url = "redis://{0}:{1}/".format(host, port)
 
 class logger:
